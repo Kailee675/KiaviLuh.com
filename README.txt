@@ -24,6 +24,7 @@ luh_expansion_01.mp4 — Expansion Project
 
 AI Process Documentation:
 Tool: OpenAI ChatGPT
-ChatGPT Conversation: [PASTE CHATGPT SHARE LINK HERE]
+ChatGPT Conversation:https://chatgpt.com/share/6a908193-0a00-83e8-a17d-af9159e03c37
+
 
 A PDF copy of the full AI conversation has also been saved as a backup.
