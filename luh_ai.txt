@@ -7,5 +7,5 @@ Model name and version: GPT-5.6 Sol
 App/interface used: ChatGPT web app
 
 Share link to full, raw, unedited AI conversation:
-https://chatgpt.com/share/6a7e9d7c-6388-83e8-b0b0-1336361020d7
+https://chatgpt.com/share/6a908193-0a00-83e8-a17d-af9159e03c37
 IMPORTANT: Replace the placeholder above with your actual full-conversation share link before submitting the ZIP.
