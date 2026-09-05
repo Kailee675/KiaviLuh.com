@@ -1,0 +1,783 @@
+:root {
+  --paper: #ffffff;
+  --ink: #070707;
+  --muted: #626262;
+  --line: #b8b8b8;
+  --soft: #f3f3f3;
+  --black-chrome: linear-gradient(
+    180deg,
+    #000000 0%,
+    #000000 34%,
+    #070707 46%,
+    #151515 49%,
+    #040404 52%,
+    #000000 68%,
+    #000000 100%
+  );
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 12% 14%, rgba(0,0,0,.055) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 83% 23%, rgba(0,0,0,.045) 0 1px, transparent 1.5px),
+    linear-gradient(rgba(0,0,0,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.035) 1px, transparent 1px);
+  background-size: 78px 78px, 112px 112px, 42px 42px, 42px 42px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid rgba(0,0,0,.11);
+  border-radius: 50%;
+}
+
+body::before {
+  width: 44vw;
+  height: 44vw;
+  min-width: 320px;
+  min-height: 320px;
+  right: -18vw;
+  top: 7vh;
+  box-shadow: inset 0 0 0 14px rgba(0,0,0,.018), inset 0 0 0 30px rgba(0,0,0,.012);
+}
+
+body::after {
+  width: 28vw;
+  height: 28vw;
+  min-width: 220px;
+  min-height: 220px;
+  left: -13vw;
+  bottom: 5vh;
+  box-shadow: inset 0 0 0 10px rgba(0,0,0,.018);
+}
+
+a { color: inherit; }
+
+.site-header,
+main,
+footer {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.site-header {
+  position: relative;
+  padding: 26px 0 44px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.chrome-mark {
+  width: fit-content;
+  margin-bottom: 56px;
+  padding: 7px 10px 6px;
+  border: 1px solid #242424;
+  background: linear-gradient(180deg, #050505 0%, #252525 46%, #050505 53%, #000 100%);
+  color: #f3f3f3;
+  font: 700 11px/1 "Courier New", monospace;
+  letter-spacing: .15em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 1px 2px rgba(0,0,0,.12);
+}
+
+.eyebrow,
+.project-number,
+.footer-code,
+.audio-label,
+.meta,
+figcaption,
+.top-link {
+  font-family: "Courier New", Courier, monospace;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  margin: 0 0 9px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+h1,
+.project h2 {
+  margin: 0;
+  font-family: "Arial Black", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  line-height: .9;
+  letter-spacing: -.065em;
+  color: #020202;
+  background: var(--black-chrome);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: .7px #000;
+  text-shadow: 0 1px 0 rgba(255,255,255,.14), 0 2px 2px rgba(0,0,0,.12);
+}
+
+h1 { font-size: clamp(48px, 9vw, 116px); }
+
+.location {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.project-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 54px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.project-nav a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 50px;
+  padding: 0 14px;
+  border-right: 1px solid var(--line);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .075em;
+  transition: background 150ms ease;
+}
+.project-nav a:last-child { border-right: 0; }
+.project-nav a:hover,
+.project-nav a:focus-visible { background: rgba(0,0,0,.055); }
+.project-nav span { color: #555; font-family: "Courier New", monospace; }
+
+main { padding-top: 28px; }
+
+.project {
+  padding: 48px 0 92px;
+  border-bottom: 1px solid var(--ink);
+  scroll-margin-top: 16px;
+}
+
+.project-heading {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 18px;
+  align-items: start;
+  margin-bottom: 26px;
+}
+
+.project-number {
+  margin: 8px 0 0;
+  font-family: "Arial Black", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .03em;
+  color: #060606;
+}
+
+.project h2 { font-size: clamp(42px, 6vw, 76px); }
+
+.meta {
+  margin: 13px 0 0;
+  color: #4d4d4d;
+  font-size: 11px;
+  letter-spacing: .055em;
+}
+
+figure { margin: 0; }
+
+img,
+video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #ededed;
+  border: 1px solid #222;
+}
+video { max-height: 78vh; object-fit: contain; }
+
+figcaption {
+  margin-top: 8px;
+  color: #595959;
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+
+.project-text {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 40px;
+  align-items: end;
+  width: 100%;
+  margin-top: 24px;
+  padding: 22px 24px;
+  border: 1px solid #bcbcbc;
+  background: rgba(255,255,255,.82);
+}
+
+.project-text p {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  color: #171717;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+.top-link {
+  white-space: nowrap;
+  color: #595959;
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-decoration: none;
+}
+.top-link:hover,
+.top-link:focus-visible { color: #000; text-decoration: underline; }
+
+.audio-shell {
+  display: grid;
+  place-items: center;
+  min-height: 330px;
+  padding: 34px;
+  border: 1px solid #242424;
+  background:
+    linear-gradient(115deg, transparent 0 37%, rgba(255,255,255,.05) 37.2% 37.7%, transparent 38% 100%),
+    linear-gradient(180deg, #050505 0%, #171717 36%, #030303 53%, #232323 76%, #080808 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.11);
+}
+.audio-label { color: #b6b6b6; font-size: 10px; letter-spacing: .12em; }
+audio { width: min(720px, 100%); }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0 40px;
+  color: #5e5e5e;
+  font-size: 11px;
+}
+footer p { margin: 0; }
+.footer-code { font-size: 10px; letter-spacing: .09em; }
+
+@supports not (-webkit-background-clip: text) {
+  h1,
+  .project h2 {
+    background: none;
+    color: #030303;
+    -webkit-text-fill-color: #030303;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header,
+  main,
+  footer { width: min(100% - 24px, 1180px); }
+  .chrome-mark { margin-bottom: 42px; }
+  .project-nav { grid-template-columns: 1fr; }
+  .project-nav a { border-right: 0; border-bottom: 1px solid var(--line); }
+  .project-nav a:last-child { border-bottom: 0; }
+  .project { padding: 38px 0 66px; }
+  .project-heading { grid-template-columns: 40px 1fr; gap: 8px; }
+  .project-text { grid-template-columns: 1fr; gap: 22px; padding: 18px; }
+  .audio-shell { min-height: 220px; padding: 22px 12px; }
+  footer { flex-direction: column; }
+}
+\n\n/* Peer review refinement: museum catalog + true black chrome */\nbody {\n  background-image:\n    linear-gradient(rgba(0,0,0,.022) 1px, transparent 1px),\n    linear-gradient(90deg, rgba(0,0,0,.022) 1px, transparent 1px),\n    radial-gradient(circle at 84% 16%, rgba(0,0,0,.035) 0 1px, transparent 1.5px);\n  background-size: 48px 48px, 48px 48px, 96px 96px;\n}\n\nh1,\n.project h2 {\n  background: var(--black-chrome) !important;\n  -webkit-background-clip: text !important;\n  background-clip: text !important;\n  -webkit-text-fill-color: transparent !important;\n  -webkit-text-stroke: .85px #000 !important;\n  text-shadow: 0 1px 0 rgba(255,255,255,.045), 0 2px 2px rgba(0,0,0,.10) !important;\n}\n\n.project {\n  position: relative;\n  margin-top: 34px;\n  padding: 58px 28px 86px;\n  border: 1px solid rgba(0,0,0,.24);\n  background: rgba(255,255,255,.965);\n  box-shadow: 0 18px 48px rgba(0,0,0,.035);\n}\n\n.project::before {\n  content: \"MAT 189 / COLLECTION / \" attr(data-accession);\n  display: block;\n  margin: 0 0 26px;\n  padding-bottom: 10px;\n  border-bottom: 1px solid rgba(0,0,0,.20);\n  color: #111;\n  font: 700 10px/1.2 \"Courier New\", monospace;\n  letter-spacing: .13em;\n  text-transform: uppercase;\n}\n\n.project-text {\n  border-color: rgba(0,0,0,.24);\n  background: #fff;\n}\n\n.project-text p {\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif !important;\n  font-size: clamp(14px, 1.2vw, 16px) !important;\n  font-weight: 400 !important;\n  line-height: 1.72 !important;\n  letter-spacing: 0 !important;\n}\n\n.meta, figcaption {\n  color: #454545;\n}\n\n.top-link {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  min-height: 38px;\n  padding: 9px 12px;\n  border: 1px solid #080808;\n  background: #fff;\n  color: #080808;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: .08em;\n  text-decoration: none;\n  transition: background .15s ease, color .15s ease, transform .15s ease;\n}\n.top-link:hover, .top-link:focus-visible {\n  background: #050505;\n  color: #fff;\n  text-decoration: none;\n  transform: translateY(-1px);\n}\n\n.project-nav {\n  background: rgba(255,255,255,.78);\n}\n\n@media (max-width: 720px) {\n  .project { padding: 38px 18px 62px; }\n  .top-link { width: 100%; }\n}\n
+
+/* Final peer-review adjustment */
+.header-copy { padding-top: 0; }
+
+/* More prominent return-to-index control */
+.top-link {
+  min-height: 52px !important;
+  padding: 14px 20px !important;
+  border: 2px solid #000 !important;
+  border-radius: 999px !important;
+  background: #050505 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 5px 0 #bdbdbd, 0 9px 20px rgba(0,0,0,.12) !important;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease !important;
+}
+.top-link:hover,
+.top-link:focus-visible {
+  background: #000 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 7px 0 #9d9d9d, 0 12px 24px rgba(0,0,0,.16) !important;
+}
+.top-link:active {
+  transform: translateY(2px) !important;
+  box-shadow: 0 2px 0 #9d9d9d !important;
+}
+
+
+/* ==========================================================
+   PEER REVIEW FINAL — VISIBILITY / LINKS / SCROLL / BLACK CHROME
+   ========================================================== */
+
+:root {
+  /* Near-black chrome only: no broad silver band. */
+  --project-black-chrome: linear-gradient(
+    180deg,
+    #000000 0%,
+    #020202 28%,
+    #0b0b0b 46%,
+    #171717 50%,
+    #080808 54%,
+    #010101 72%,
+    #000000 100%
+  );
+}
+
+/* Keep descenders such as the J fully inside the heading area and make the
+   chrome consistent from top to bottom rather than turning gray. */
+h1,
+.project h2 {
+  display: inline-block !important;
+  line-height: 1.02 !important;
+  padding: .02em .04em .13em 0 !important;
+  overflow: visible !important;
+  background: var(--project-black-chrome) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #020202 !important;
+  -webkit-text-stroke: .8px #000 !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,.055), 0 2px 2px rgba(0,0,0,.10) !important;
+}
+
+.project-heading {
+  overflow: visible !important;
+  padding-bottom: 6px;
+}
+
+/* Small archival / museum text: larger, darker, cleaner, but still subtle. */
+.project::before {
+  color: #202020 !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  letter-spacing: .11em !important;
+}
+
+.location {
+  color: #262626 !important;
+  font-size: 16px !important;
+  letter-spacing: .02em;
+}
+
+.project-nav a {
+  color: #111 !important;
+  font-size: 14px !important;
+  letter-spacing: .07em !important;
+}
+.project-nav span {
+  color: #333 !important;
+  font-size: 13px !important;
+}
+
+.project-number {
+  font-size: 15px !important;
+  color: #090909 !important;
+}
+
+.meta {
+  color: #2f2f2f !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
+  letter-spacing: .045em !important;
+}
+
+figcaption {
+  color: #333 !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  letter-spacing: .035em !important;
+}
+
+.audio-label {
+  color: #e2e2e2 !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: .11em !important;
+}
+
+/* Keep the project description minimalist and museum-caption-like. */
+.project-text p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: clamp(15px, 1.25vw, 17px) !important;
+  font-weight: 400 !important;
+  line-height: 1.72 !important;
+}
+
+/* The actions live together at the bottom-right of each description box. */
+.project-text {
+  grid-template-columns: minmax(0, 1fr) auto auto !important;
+  gap: 14px 18px !important;
+}
+
+.project-access-link,
+.top-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 50px !important;
+  padding: 13px 18px !important;
+  border-radius: 999px !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: .065em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.project-access-link {
+  border: 2px solid #0a0a0a !important;
+  background: #fff !important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+  box-shadow: 0 4px 0 #c6c6c6, 0 8px 16px rgba(0,0,0,.08);
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease, color .16s ease;
+}
+.project-access-link:hover,
+.project-access-link:focus-visible {
+  background: #111 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #9f9f9f, 0 12px 20px rgba(0,0,0,.13);
+}
+
+.top-link {
+  font-size: 12px !important;
+}
+
+/* Museum-like entrance/exit motion. JS toggles .is-visible. */
+.project.scroll-fade {
+  opacity: .18;
+  transform: translateY(24px) scale(.995);
+  transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+.project.scroll-fade.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+footer {
+  color: #2e2e2e !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px !important;
+}
+footer a {
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid #555;
+}
+footer a:hover,
+footer a:focus-visible {
+  color: #000;
+  border-bottom-color: #000;
+}
+
+@media (max-width: 900px) {
+  .project-text {
+    grid-template-columns: 1fr !important;
+  }
+  .project-access-link,
+  .top-link {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  .project.scroll-fade,
+  .project.scroll-fade.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* ==========================================================
+   EDITORIAL MUSEUM TYPOGRAPHY + BLURRED EXPANSION VIDEO
+   ========================================================== */
+
+:root {
+  --display-serif: "Bodoni 72", Didot, "Bodoni MT", "Times New Roman", serif;
+  --body-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* High-contrast museum/editorial serif inspired by the reference. */
+h1,
+.hero h1,
+.site-title,
+.project-title,
+.project h2,
+.project h3,
+section.project h2,
+section.project h3,
+article.project h2,
+article.project h3,
+h4,
+.subheader,
+.project-subtitle,
+nav a,
+#contents a,
+.museum-kicker,
+.museum-object,
+.project-number {
+  font-family: var(--display-serif) !important;
+}
+
+/* Main display text: elegant, high-contrast, not overly tracked. */
+h1,
+.hero h1,
+.site-title {
+  font-weight: 700 !important;
+  letter-spacing: -0.045em !important;
+  line-height: .88 !important;
+}
+
+.project-title,
+.project h2,
+.project h3,
+section.project h2,
+section.project h3,
+article.project h2,
+article.project h3 {
+  font-weight: 700 !important;
+  letter-spacing: -0.035em !important;
+  line-height: .98 !important;
+  padding-bottom: .16em !important; /* protects descenders like j, g, y */
+  overflow: visible !important;
+}
+
+/* Navigation feels like a museum index rather than a utility UI. */
+nav a,
+#contents a {
+  font-size: 1.08rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .015em !important;
+  text-transform: none !important;
+}
+
+/* Tiny archival text becomes more visible but keeps a refined look. */
+.museum-kicker,
+.museum-object,
+.project-number,
+.eyebrow,
+.meta-label,
+.nav-label,
+small,
+footer,
+footer a {
+  font-size: .83rem !important;
+  letter-spacing: .055em !important;
+  line-height: 1.45 !important;
+}
+
+/* Keep descriptions minimal and readable to contrast with the serif display type. */
+.project-description,
+.description,
+.project-copy,
+.project-text,
+.project p,
+main .project p,
+section.project p,
+article.project p {
+  font-family: var(--body-sans) !important;
+  font-size: .98rem !important;
+  line-height: 1.72 !important;
+  letter-spacing: 0 !important;
+}
+
+/* Museum-title chrome remains deep black instead of gray/silver. */
+h1,
+.hero h1,
+.site-title,
+.project-title,
+.project h2,
+.project h3,
+section.project h2,
+section.project h3,
+article.project h2,
+article.project h3 {
+  background: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 42%,
+    #111 49%,
+    #030303 53%,
+    #000 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #000 !important;
+  -webkit-text-stroke: .35px #000 !important;
+  text-shadow: none !important;
+}
+
+/* Blurred side-fill frame for the portrait/vertical Expansion video. */
+.video-blur-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0b0b0b;
+  border: 1px solid rgba(0,0,0,.22);
+  isolation: isolate;
+}
+
+.video-blur-stage .video-blur-bg {
+  position: absolute !important;
+  inset: -8% !important;
+  width: 116% !important;
+  height: 116% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  filter: blur(26px) brightness(.62) saturate(.86) !important;
+  transform: scale(1.08);
+  opacity: .94;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.video-blur-stage .video-blur-fg {
+  position: relative !important;
+  z-index: 1;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  background: transparent !important;
+}
+
+/* A fine black frame gives the video a gallery-screen feel. */
+.video-blur-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.34),
+    inset 0 0 42px rgba(0,0,0,.08);
+}
+
+/* Prevent project headings from clipping into neighboring areas. */
+.project,
+section.project,
+article.project {
+  overflow: visible !important;
+}
+
+@media (max-width: 700px) {
+  .video-blur-stage {
+    aspect-ratio: 4 / 3;
+  }
+
+  nav a,
+  #contents a {
+    font-size: 1rem !important;
+  }
+}
+
+
+/* ==========================================================
+   SMALL TEXT VISIBILITY REFINEMENT
+   ========================================================== */
+
+/* Make all utility / archival / museum text easier to read while
+   preserving the editorial museum aesthetic. */
+.museum-kicker,
+.museum-object,
+.project-number,
+.eyebrow,
+.meta-label,
+.nav-label,
+small,
+footer,
+footer a,
+.project-meta,
+.project-meta span,
+.project-label,
+.caption,
+figcaption,
+.access-link,
+.back-to-contents {
+  font-size: .92rem !important;
+  line-height: 1.5 !important;
+  letter-spacing: .04em !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+/* Slightly larger and darker navigation / index text. */
+nav,
+nav a,
+#contents,
+#contents a {
+  color: #0a0a0a !important;
+  -webkit-text-fill-color: #0a0a0a !important;
+  opacity: 1 !important;
+}
+
+/* Keep archival labels subtle but no longer faint. */
+.museum-object,
+.meta-label,
+.nav-label,
+figcaption,
+.caption {
+  color: #2a2a2a !important;
+  -webkit-text-fill-color: #2a2a2a !important;
+}
+
+/* Make footer/contact particularly clear. */
+footer,
+footer a {
+  font-size: .96rem !important;
+  font-weight: 500 !important;
+}
+
+/* Make project access links and back buttons readable at a glance. */
+.access-link,
+.back-to-contents {
+  font-weight: 700 !important;
+  letter-spacing: .055em !important;
+}
